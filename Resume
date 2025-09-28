@@ -1,0 +1,141 @@
+import React, { useState } from 'react';
+
+const Resume = () => {
+  const [isPrintMode, setIsPrintMode] = useState(false);
+
+  const handlePrint = () => {
+    setIsPrintMode(true);
+    setTimeout(() => {
+      window.print();
+      setIsPrintMode(false);
+    }, 100);
+  };
+
+  return (
+    <div className={`min-h-screen bg-background ${isPrintMode ? '' : 'p-4 md:p-8'}`}>
+      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden print:shadow-none print:max-w-full">
+        {/* Header Section */}
+        <header className="bg-primary text-primary-foreground p-6 print:p-4">
+          <div className="text-center">
+            <h1 className="text-3xl font-bold mb-2">DARWIN POSTRERO</h1>
+            <div className="space-y-1 text-sm">
+              <p>Purok Golf, Barangay Guinhalaran, Silay City</p>
+              <div className="flex flex-col sm:flex-row sm:justify-center sm:space-x-4">
+                <span>✉️ postreroz09@gmail.com</span>
+                <span>🔗 linkedin.com/in/darwin-postrero</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Content */}
+        <main className="p-6 print:p-4 space-y-6">
+          {/* Skills Section */}
+          <section>
+            <h2 className="text-xl font-semibold text-primary mb-3 border-b border-border pb-2">SKILLS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <h3 className="font-medium text-foreground mb-2">Technical Skills</h3>
+                <ul className="space-y-1 text-muted-foreground">
+                  <li>• Canva Graphic Design</li>
+                  <li>• Microsoft Office Suite</li>
+                  <li>• Data Entry & Management</li>
+                  <li>• Social Media Management</li>
+                  <li>• Detail-Oriented Analysis</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground mb-2">Languages</h3>
+                <ul className="space-y-1 text-muted-foreground">
+                  <li>• English (Fluent)</li>
+                  <li>• Tagalog (Native)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Education Section */}
+          <section>
+            <h2 className="text-xl font-semibold text-primary mb-3 border-b border-border pb-2">EDUCATION</h2>
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between items-start mb-1">
+                  <h3 className="font-semibold text-foreground">College Education</h3>
+                  <span className="text-muted-foreground text-sm">2020 - Present</span>
+                </div>
+                <p className="text-muted-foreground">STI Westnegros University</p>
+              </div>
+              <div>
+                <div className="flex justify-between items-start mb-1">
+                  <h3 className="font-semibold text-foreground">Senior High School</h3>
+                  <span className="text-muted-foreground text-sm">2018 - 2020</span>
+                </div>
+                <p className="text-muted-foreground">La Consolacion College Bacolod</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Certificates Section */}
+          <section>
+            <h2 className="text-xl font-semibold text-primary mb-3 border-b border-border pb-2">CERTIFICATIONS</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="bg-muted p-3 rounded-lg">
+                <h4 className="font-medium text-foreground">Resume Writing & Job Interviewing</h4>
+              </div>
+              <div className="bg-muted p-3 rounded-lg">
+                <h4 className="font-medium text-foreground">Social Media Marketing</h4>
+              </div>
+              <div className="bg-muted p-3 rounded-lg">
+                <h4 className="font-medium text-foreground">Introduction to Bookkeeping</h4>
+              </div>
+              <div className="bg-muted p-3 rounded-lg">
+                <h4 className="font-medium text-foreground">Inventory Management</h4>
+              </div>
+              <div className="bg-muted p-3 rounded-lg md:col-span-2">
+                <h4 className="font-medium text-foreground">AI for Business Professionals</h4>
+              </div>
+            </div>
+          </section>
+
+          {/* Professional Summary */}
+          <section>
+            <h2 className="text-xl font-semibold text-primary mb-3 border-b border-border pb-2">PROFESSIONAL SUMMARY</h2>
+            <p className="text-foreground leading-relaxed">
+              Detail-oriented professional with strong skills in graphic design, data management, and social media. 
+              Proficient in Canva and Microsoft Office suite with certifications in business technologies including 
+              AI applications, bookkeeping, and marketing. Currently pursuing higher education while developing 
+              expertise in modern business tools and digital platforms.
+            </p>
+          </section>
+        </main>
+
+        {/* Print Button */}
+        {!isPrintMode && (
+          <div className="p-6 print:hidden">
+            <button
+              onClick={handlePrint}
+              className="w-full bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 transition-colors font-medium"
+            >
+              Print Resume
+            </button>
+          </div>
+        )}
+      </div>
+
+      <style jsx>{`
+        @media print {
+          .max-w-4xl {
+            max-width: 100%;
+            box-shadow: none;
+          }
+          button {
+            display: none;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default Resume;
+
